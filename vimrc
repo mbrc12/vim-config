@@ -1,10 +1,14 @@
 call plug#begin()
 
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 
 Plug 'adelarsq/vim-grimmjow'
 
+Plug 'lifepillar/vim-gruvbox8'
+
 Plug 'ayu-theme/ayu-vim'
+
+" Plug 'vimlab/split-term.vim'
 
 Plug 'tpope/vim-fireplace', { 'for' : 'clojure' }
 
@@ -35,6 +39,8 @@ endfunction
 
 autocmd InsertEnter,InsertLeave * call ToggleCul()
 
+tnoremap <Esc> <C-\><C-n>
+
 set ruler
 set nocompatible
 set ff=unix
@@ -48,7 +54,9 @@ set omnifunc=syntaxcomplete#Complete
 filetype indent plugin on
 syntax on
 
-set number
+set incsearch
+set hlsearch
+set number relativenumber
 set cursorline
 set nowrap
 set termguicolors
@@ -80,7 +88,7 @@ autocmd CompleteDone * pclose
 " colorscheme xcode
 
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox8_hard
 
 nmap <silent> -w :w<CR>
 
@@ -100,13 +108,14 @@ set backspace=indent,eol,start
 nmap <silent> -- zA
 nmap <silent> -ec :tabnew ~/.vim/vimrc<CR>
 
-
+nnoremap <silent> -T :term ++rows=10 fish<CR>
 
 nmap <silent> <leader>1 1gt
 nmap <silent> <leader>2 2gt
 nmap <silent> <leader>3 3gt
 nmap <silent> <leader>4 4gt
 
+let g:lsp_semantic_enabled=1
 let g:lsp_diagnostics_echo_cursor = 1
 nmap <silent> <leader>= :LspHover<CR>
 nmap <silent> <leader>-i :tab LspImplementation<CR>
