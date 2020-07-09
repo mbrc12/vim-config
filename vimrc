@@ -2,8 +2,6 @@ call plug#begin()
 
 Plug 'flazz/vim-colorschemes'
 
-" Plug 'chriskempson/base16-vim'
-
 Plug 'adelarsq/vim-grimmjow'
 
 Plug 'ayu-theme/ayu-vim'
@@ -19,8 +17,6 @@ Plug 'tpope/vim-commentary'
 Plug 'AndrewRadev/bufferize.vim'
 
 Plug 'tpope/vim-fugitive'
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -66,8 +62,11 @@ autocmd CompleteDone * pclose
 "     colorscheme grimmjow
 " endif
 
-colorscheme gotham256
+" " colorscheme gotham256
 " colorscheme xcode
+
+set background=dark
+colorscheme gruvbox
 
 nmap <silent> -w :w<CR>
 
