@@ -1,6 +1,8 @@
 call plug#begin()
 
-Plug 'chriskempson/base16-vim'
+Plug 'flazz/vim-colorschemes'
+
+" Plug 'chriskempson/base16-vim'
 
 Plug 'adelarsq/vim-grimmjow'
 
@@ -64,7 +66,8 @@ autocmd CompleteDone * pclose
 "     colorscheme grimmjow
 " endif
 
-colorscheme grimmjow
+colorscheme gotham256
+" colorscheme xcode
 
 nmap <silent> -w :w<CR>
 
@@ -82,7 +85,9 @@ let mapleader = " "
 set backspace=indent,eol,start
 
 nmap <silent> -- zA
-nmap <silent> -ec :tabnew ~/.config/nvim/init.vim<CR>
+nmap <silent> -ec :tabnew ~/.vim/vimrc<CR>
+
+
 
 nmap <silent> <leader>1 1gt
 nmap <silent> <leader>2 2gt
@@ -106,5 +111,20 @@ nmap <silent> -ee :Eval<CR>
 xnoremap "+y y:call system("wl-copy", @")<cr>
 nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
 nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
+
+function! NewFile() 
+    call inputsave()
+    let l:fn = input("Tab file [<CR> to cancel] ? ", "", "file")
+    call inputrestore()
+    if l:fn == ""
+        echo "Cancelled"
+    else 
+        let l:cmd = "tabnew ".l:fn
+        call execute(l:cmd)
+    endif 
+endfunction 
+
+nmap <silent> <leader>t :call NewFile()<CR>
+
 
 " set runtimepath+=/home/mbrc/dev/supersede
