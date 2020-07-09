@@ -61,6 +61,7 @@ set cursorline
 set nowrap
 set termguicolors
 
+set nofoldenable
 set foldmethod=indent
 
 set mouse=a
