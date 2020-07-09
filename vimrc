@@ -28,6 +28,20 @@ Plug 'dbakker/vim-projectroot'
 
 call plug#end()
 
+function! ToggleCul()
+    set cul! 
+    redraw
+endfunction
+
+autocmd InsertEnter,InsertLeave * call ToggleCul()
+
+set ruler
+set nocompatible
+set ff=unix
+
+" let g:asyncomplete_auto_popup=0
+" inoremap <expr> <C-p>   pumvisible() ? "\<C-n>" : "\<Tab>"
+
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
@@ -93,10 +107,13 @@ nmap <silent> <leader>2 2gt
 nmap <silent> <leader>3 3gt
 nmap <silent> <leader>4 4gt
 
+let g:lsp_diagnostics_echo_cursor = 1
 nmap <silent> <leader>= :LspHover<CR>
 nmap <silent> <leader>-i :tab LspImplementation<CR>
 nmap <silent> <leader>] :LspNextError<CR>
 nmap <silent> <leader>[ :LspPreviousError<CR>
+nmap <silent> <leader>; :LspNextWarning<CR>
+nmap <silent> <leader>' :LspPreviousWarning<CR>
 
 
 nmap <silent> -d :ProjectRootExe NERDTreeToggle<CR>
