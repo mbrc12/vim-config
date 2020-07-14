@@ -30,6 +30,8 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'dbakker/vim-projectroot'
 
+Plug 'dag/vim-fish'
+
 call plug#end()
 
 function! ToggleCul()
@@ -76,19 +78,15 @@ set wildmenu
 let g:SuperTabDefaultCompletionType='<c-x><c-o>'
 autocmd CompleteDone * pclose
 
-" if system('date +%H') > 18
-"     set background=dark
-"     let ayucolor="mirage"
-"     colorscheme ayu
-" else
-"     set background=light
-"     colorscheme grimmjow
-" endif
+if system('date +%H') >= 17
+    set background=dark
+else
+    set background=light
+endif
 
 " " colorscheme gotham256
 " colorscheme xcode
 
-set background=dark
 colorscheme gruvbox8_hard
 
 nmap <silent> -w :w<CR>
