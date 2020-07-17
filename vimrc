@@ -22,11 +22,13 @@ Plug 'AndrewRadev/bufferize.vim'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'dbakker/vim-projectroot'
 
@@ -114,14 +116,14 @@ nmap <silent> <leader>2 2gt
 nmap <silent> <leader>3 3gt
 nmap <silent> <leader>4 4gt
 
-let g:lsp_semantic_enabled=1
-let g:lsp_diagnostics_echo_cursor = 1
-nmap <silent> <leader>= :LspHover<CR>
-nmap <silent> <leader>-i :tab LspImplementation<CR>
-nmap <silent> <leader>] :LspNextError<CR>
-nmap <silent> <leader>[ :LspPreviousError<CR>
-nmap <silent> <leader>; :LspNextWarning<CR>
-nmap <silent> <leader>' :LspPreviousWarning<CR>
+" let g:lsp_semantic_enabled=1
+" let g:lsp_diagnostics_echo_cursor = 1
+" nmap <silent> <leader>= :LspHover<CR>
+" nmap <silent> <leader>-i :tab LspImplementation<CR>
+" nmap <silent> <leader>] :LspNextError<CR>
+" nmap <silent> <leader>[ :LspPreviousError<CR>
+" nmap <silent> <leader>; :LspNextWarning<CR>
+" nmap <silent> <leader>' :LspPreviousWarning<CR>
 
 
 nmap <silent> -d :ProjectRootExe NERDTreeToggle<CR>
@@ -129,8 +131,8 @@ nmap <silent> -d :ProjectRootExe NERDTreeToggle<CR>
 nmap <silent> -am :Bufferize messages<CR>
 
 nmap <silent> -eb :%Eval<CR>
-vmap <silent> -ee :Eval<CR>
-nmap <silent> -ee :Eval<CR>
+vmap -ee :Eval<CR>
+nmap -ee :Eval<CR>
 
 xnoremap "+y y:call system("wl-copy", @")<cr>
 nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
