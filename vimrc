@@ -2,11 +2,15 @@ call plug#begin()
 
 " Plug 'flazz/vim-colorschemes'
 
+Plug 'tssm/fairyfloss.vim'
+
 Plug 'adelarsq/vim-grimmjow'
 
 Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'ayu-theme/ayu-vim'
+
+Plug 'lervag/vimtex'
 
 " Plug 'vimlab/split-term.vim'
 
@@ -22,7 +26,7 @@ Plug 'AndrewRadev/bufferize.vim'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'mattn/vim-lsp-settings'
@@ -35,6 +39,11 @@ Plug 'dbakker/vim-projectroot'
 Plug 'dag/vim-fish'
 
 call plug#end()
+
+let g:tex_flavor = "latex"
+
+set guifont=Menlo:h18
+set guioptions=
 
 function! ToggleCul()
     set cul! 
@@ -89,7 +98,7 @@ endif
 " " colorscheme gotham256
 " colorscheme xcode
 
-colorscheme gruvbox8_hard
+colorscheme fairyfloss
 
 nmap <silent> -w :w<CR>
 
@@ -111,6 +120,32 @@ nmap <silent> -ec :tabnew ~/.vim/vimrc<CR>
 
 nnoremap <silent> -T :term ++rows=10 fish<CR>
 
+function! TexMode()
+    set wrap
+    nnoremap <Down> gj
+    nnoremap <Up> gk
+    vnoremap <Down> gj
+    vnoremap <Up> gk
+    inoremap <Down> <C-o>gj
+    inoremap <Up> <C-o>gk
+    inoremap <Home> <C-o>g<Home>
+    inoremap <End>  <C-o>g<End>
+endfunction
+
+function! TexModeOff()
+    set nowrap
+    nnoremap <Down> <Down>
+    nnoremap <Up> <Up>
+    vnoremap <Down> <Down>
+    vnoremap <Up> <Up>
+    inoremap <Down> <Down>
+    inoremap <Up> <Up>
+    inoremap <Home> <Home>
+    inoremap <End> <End>
+endfunction
+
+nmap <silent> -tex :call TexMode()<CR>
+nmap <silent> -oth :call TexModeOff()<CR>
 nmap <silent> <leader>1 1gt
 nmap <silent> <leader>2 2gt
 nmap <silent> <leader>3 3gt
@@ -134,9 +169,9 @@ nmap <silent> -eb :%Eval<CR>
 vmap -ee :Eval<CR>
 nmap -ee :Eval<CR>
 
-xnoremap "+y y:call system("wl-copy", @")<cr>
-nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
-nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
+" xnoremap "+y y:call system("wl-copy", @")<cr>
+" nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+" nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
 
 function! NewFile() 
     call inputsave()
